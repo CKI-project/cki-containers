@@ -1,0 +1,20 @@
+# Enable fastestmirror
+config fastestmirror true
+# Review the list of repos
+repo list
+# Upgrade the system
+upgrade
+# Install basics
+install ccache dnf-plugins-core procps-ng python2-junit_xml python2-junitxml hostname htop kmod openssl sysstat lsof perl tmux wget
+# For skt
+install beaker-client python-krbV python2-pip python3-pip
+# For aarch64
+install binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu gcc-c++-aarch64-linux-gnu
+# For ppc64
+install binutils-powerpc64le-linux-gnu gcc-powerpc64le-linux-gnu gcc-c++-powerpc64le-linux-gnu
+# For ppc64le
+install binutils-s390x-linux-gnu gcc-s390x-linux-gnu gcc-c++-s390x-linux-gnu
+# For x86_64
+install binutils-x86_64-linux-gnu gcc-x86_64-linux-gnu gcc-c++-x86_64-linux-gnu
+# Run the transaction
+transaction run
