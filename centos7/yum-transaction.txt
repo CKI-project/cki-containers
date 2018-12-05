@@ -1,0 +1,15 @@
+upgrade
+install epel-release hostname htop rsync wget yum-utils
+# For ansible
+install ansible python-junitxml python2-junit_xml
+# For skt
+install beaker-client ccache python python-krbV python-pip
+# For aarch64
+install binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu gcc-c++-aarch64-linux-gnu
+# For ppc64le
+install binutils-powerpc64-linux-gnu binutils-powerpc64le-linux-gnu gcc-powerpc64-linux-gnu gcc-c++-powerpc64-linux-gnu
+# For s390x
+install binutils-s390x-linux-gnu gcc-s390x-linux-gnu gcc-c++-s390x-linux-gnu
+# For x86_64
+install binutils-x86_64-linux-gnu gcc-x86_64-linux-gnu gcc-c++-x86_64-linux-gnu
+run
