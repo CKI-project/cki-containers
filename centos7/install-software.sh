@@ -1,4 +1,5 @@
 #!/bin/bash -x
+set -e
 
 CPU_SHARES=$(cat /sys/fs/cgroup/cpu/cpu.shares)
 export MAKE_JOBS=$(expr $CPU_SHARES / 1024)
