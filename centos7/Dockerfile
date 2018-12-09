@@ -17,3 +17,17 @@ RUN pip install -U pip setuptools virtualenv
 # Add CA certificate
 ADD rh-ca.crt /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
+
+# For supporting arbitrary user IDs
+ENV NSS_WRAPPER_PASSWD=/tmp/passwd NSS_WRAPPER_GROUP=/etc/group
+
+RUN touch ${NSS_WRAPPER_PASSWD} && chgrp 0 ${NSS_WRAPPER_PASSWD} && chmod g+rw ${NSS_WRAPPER_PASSWD}
+
+ADD passwd.template /passwd.template
+ADD nss_wrapper.sh /nss_wrapper.sh
+
+RUN adduser --gid 0 cki
+
+USER cki
+
+ENTRYPOINT ["/nss_wrapper.sh"]
