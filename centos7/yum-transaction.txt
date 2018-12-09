@@ -14,4 +14,6 @@ install binutils-powerpc64-linux-gnu binutils-powerpc64le-linux-gnu gcc-powerpc6
 install binutils-s390x-linux-gnu gcc-s390x-linux-gnu gcc-c++-s390x-linux-gnu
 # For x86_64
 install binutils-x86_64-linux-gnu gcc-x86_64-linux-gnu gcc-c++-x86_64-linux-gnu
+# For supporting arbitrary user IDs
+install gettext nss_wrapper
 run
