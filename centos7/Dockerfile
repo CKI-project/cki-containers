@@ -18,6 +18,9 @@ RUN pip install -U pip setuptools virtualenv
 ADD rh-ca.crt /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
+# krbV.Krb5Error: (-1765328160, 'Configuration file does not specify default realm')
+RUN sed -i 's@.*default_realm.*@ default_realm = REDHAT.COM@g' /etc/krb5.conf
+
 # For supporting arbitrary user IDs
 ENV NSS_WRAPPER_PASSWD=/tmp/passwd NSS_WRAPPER_GROUP=/etc/group
 
