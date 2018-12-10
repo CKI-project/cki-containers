@@ -22,10 +22,10 @@ ENV NSS_WRAPPER_PASSWD=/tmp/passwd NSS_WRAPPER_GROUP=/etc/group
 RUN touch ${NSS_WRAPPER_PASSWD} && chgrp 0 ${NSS_WRAPPER_PASSWD} && chmod g+rw ${NSS_WRAPPER_PASSWD}
 
 ADD passwd.template /passwd.template
-ADD nss_wrapper.sh /nss_wrapper.sh
+ADD nss_wrapper /nss_wrapper
 
 RUN adduser --gid 0 cki
 
 USER cki
 
-ENTRYPOINT ["/nss_wrapper.sh"]
+ENTRYPOINT ["/nss_wrapper"]
