@@ -22,15 +22,7 @@ RUN update-ca-trust
 RUN sed -i 's@.*default_realm.*@ default_realm = REDHAT.COM@g' /etc/krb5.conf
 
 # For supporting arbitrary user IDs
-ENV NSS_WRAPPER_PASSWD=/tmp/passwd NSS_WRAPPER_GROUP=/etc/group
-
-RUN touch ${NSS_WRAPPER_PASSWD} && chgrp 0 ${NSS_WRAPPER_PASSWD} && chmod g+rw ${NSS_WRAPPER_PASSWD}
-
-ADD passwd.template /passwd.template
-ADD nss_wrapper /nss_wrapper
-
-RUN adduser --gid 0 cki
-
-USER cki
-
-ENTRYPOINT ["/nss_wrapper"]
+ADD uid2passwd /usr/local/bin/uid2passwd
+RUN chmod g=u /etc/passwd
+ENTRYPOINT [ "/usr/local/bin/uid2passwd" ]
+USER 1001
