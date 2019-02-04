@@ -22,7 +22,7 @@ RUN update-ca-trust
 RUN sed -i 's@.*default_realm.*@ default_realm = REDHAT.COM@g' /etc/krb5.conf
 
 # pip3 support
-ln -s /usr/bin/pip3.6 /usr/bin/pip3
+RUN ln -s /usr/bin/pip3.6 /usr/bin/pip3
 
 # For supporting arbitrary user IDs
 ADD uid2passwd /usr/local/bin/uid2passwd
