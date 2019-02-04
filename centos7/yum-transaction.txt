@@ -5,7 +5,7 @@ install ansible python-junitxml python2-junit_xml
 # For compiling git
 install autoconf libcurl-devel
 # For skt
-install beaker-client ccache python python-krbV python-pip openssh-clients
+install beaker-client ccache python python-krbV python-pip openssh-clients python36-pip
 # For aarch64
 install binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu gcc-c++-aarch64-linux-gnu
 # For ppc64le
