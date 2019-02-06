@@ -9,8 +9,9 @@ RUN dnf -y --nodocs shell /tmp/dnf-transaction.txt && \
       rm -fv /tmp/dnf-transaction.txt
 
 # Install python packages
-RUN pip2 install -U pip setuptools virtualenv && \
-      pip3 install -U pip setuptools virtualenv
+RUN pip2 install -U pip setuptools virtualenv
+RUN dnf -y reinstall python3-pip
+RUN pip3 install -U pip setuptools virtualenv
 
 # Add CA certificate
 ADD rh-ca.crt /etc/pki/ca-trust/source/anchors/
@@ -20,10 +21,7 @@ RUN update-ca-trust
 RUN sed -i 's@.*default_realm.*@    default_realm = REDHAT.COM@g' /etc/krb5.conf
 
 # Ensure that we always use UTF-8 and with American English locale
-RUN locale-gen en_US.UTF-8
-
-COPY ./default_locale /etc/default/locale
-RUN chmod 0755 /etc/default/locale
+RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8 || true
 
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
