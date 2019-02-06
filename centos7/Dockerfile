@@ -25,10 +25,7 @@ RUN sed -i 's@.*default_realm.*@ default_realm = REDHAT.COM@g' /etc/krb5.conf
 RUN ln -s /usr/bin/pip3.6 /usr/bin/pip3
 
 # Ensure that we always use UTF-8 and with American English locale
-RUN locale-gen en_US.UTF-8
-
-COPY ./default_locale /etc/default/locale
-RUN chmod 0755 /etc/default/locale
+RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8
 
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
